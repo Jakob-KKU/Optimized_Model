@@ -39,7 +39,7 @@ end
 
 function Update_at!(site::Int, a::agent, obstacle::geometry)
 
-    a.traj[site] = a.traj[site] .+ a.γ .* ∇E(a, site, obstacle) .+ 0.00 * randn()
+    a.traj[site] = a.traj[site] .+ a.γ .* ∇E(a, site, obstacle)
 
 end
 

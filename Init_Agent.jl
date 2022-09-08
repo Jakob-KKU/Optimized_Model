@@ -1,17 +1,19 @@
 #Init the Agent
 
-function Create_Agent(start, goal, δt, T, α, γ)
+function Create_Agent(start, goal, δt, T, α, β, ϵ, γ)
 
     steps = Int(floor(T/δt))
 
-    agent(start, start, goal, fill((0.0, 0.0), steps), α, δt, T, γ)
+    agent(start, start, goal, fill((0.0, 0.0), steps), α, β, ϵ, δt, T, γ)
 
 end
 
-function Init_Parameter!(a::agent, δt, T, α, γ, start, goal)
+function Init_Parameter!(a::agent, δt, T, α, β, ϵ, γ, start, goal)
     a.δt = δt
     a.T = T
     a.α = α
+    a.β = β
+    a.ϵ = ϵ
     a.goal = goal
     a.start = start
     a.γ = γ
