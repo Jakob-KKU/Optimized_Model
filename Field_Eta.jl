@@ -1,8 +1,4 @@
 #Calculate the Field η
-function HelloWorld()
-    println("Hello")
-end
-
 
 #gaussian and its gradient at point x
 G(x::NTuple{2, Float64}, μ::NTuple{2, Float64}, σ::Float64) = 1/(2*π*(σ)^2)*exp(-(d(x, μ)^2)/(2*(σ)^2))
