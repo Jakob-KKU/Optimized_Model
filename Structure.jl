@@ -12,7 +12,7 @@ mutable struct agent
     β::Float64 #influence of difference to V_des
     ϵ::Float64 #Dilation parameter of maximum time
     δt::Float64 #time-step
-    T::Float64 #maximum time
+    v_des::Float64 #desired_velocity
 
 
     γ::Float64 #Optimization stepsize

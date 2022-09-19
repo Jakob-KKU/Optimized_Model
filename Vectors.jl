@@ -12,3 +12,27 @@ normalize(a::NTuple{2, Float64}) = a./abs(a)
 Base.abs(a::NTuple{2, Float64}) = sqrt(a[1]^2+a[2]^2)
 
 ∇d(u::NTuple{2, Float64}, v::NTuple{2, Float64}) = -1 .* (u.-v) ./ d(u, v)
+
+v(P1::NTuple{2, Float64}, P2::NTuple{2, Float64}, P3::NTuple{2, Float64}, δt) = (d(P1, P2) + d(P2, P3))/(2*δt)
+
+function v(traj::Vector, start, goal, δt)
+
+    vels = fill(0.0, length(traj))
+
+    vels[1] = v(start, traj[1], traj[2], δt)
+
+    for i in 2:length(traj)-1
+
+        vels[i] = v(traj[i-1], traj[i], traj[i+1], δt)
+
+    end
+
+    vels[end] =  v(traj[end-1], traj[end], goal, δt)
+
+    vels
+
+end
+
+#estimated time from start to goal
+T(a::agent) = d(a.start, a.goal)/(a.v_des)
+T(start, goal, v_des) = d(start, goal)/(v_des)
