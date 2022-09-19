@@ -4,4 +4,7 @@ include("./Field_Eta.jl")
 include("./Energy.jl")
 include("./Init_Agent.jl")
 include("./Init_Obstacle.jl")
-include("./Optimization_Algorithm.jl");
+include("./Ordered_Optimization.jl")
+include("./Random_Optimization.jl")
+include("./Parallel_Optimization.jl")
+;
