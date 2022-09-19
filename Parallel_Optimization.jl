@@ -3,7 +3,7 @@
 function Run_Parallel_Optimization!(a::agent, obstacle::geometry, steps::Int, Δsteps::Int, ΔE)
 
     #show progress
-    p = Progress(steps, 0.1)
+    q = Progress(steps, 0.1)
 
     trajectories = fill((0.0, 0.0), Int(round(steps/Δsteps)+1), length(a.traj))
     energies = fill(0.0, steps+1)
@@ -37,7 +37,7 @@ function Run_Parallel_Optimization!(a::agent, obstacle::geometry, steps::Int, Δ
             break
         end
 
-        next!(p)
+        next!(q)
 
     end
 

@@ -1,8 +1,8 @@
 #Calculate the Energy E[a.traj]
 #E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) = a.α*d(p1, p2)
-#E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) =
-#    a.α*(δt*(1+a.ϵ))*(d(p1, p2)/(δt*(1+a.ϵ))-a.v_des)^2#
-E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) = a.α*d(p1, p2)^2
+E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) =
+    a.α*(δt*(1+a.ϵ))*(d(p1, p2)/(δt*(1+a.ϵ))-a.v_des)^2#
+#E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) = a.α*d(p1, p2)^2
 
 
 
