@@ -1,7 +1,7 @@
 #Calculate the Field η
 
 #gaussian and its gradient at point x
-G(x::NTuple{2, Float64}, μ::NTuple{2, Float64}, σ::Float64) = 1/(2*π*(σ)^2)*exp(-(d(x, μ)^2)/(2*σ^2))
+G(x::NTuple{2, Float64}, μ::NTuple{2, Float64}, σ::Float64) = 1/(2*π*σ^2)*exp(-(d(x, μ)^2)/(2*σ^2))
 ∇G(x::NTuple{2, Float64}, μ::NTuple{2, Float64}, σ::Float64) = G(x, μ, σ).*d_vec(x, μ)./σ^2
 
 function η(x::NTuple{2, Float64}, obstacle::geometry)

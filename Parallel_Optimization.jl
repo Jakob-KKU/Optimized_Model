@@ -28,7 +28,7 @@ function Run_Parallel_Optimization!(a::agent, obstacle::geometry, steps::Int, Δ
 
         energies[i+1] = E(a, obstacle)
 
-        if abs(energies[i+1] - energies[i]) < ΔE
+        if abs(energies[i+1] - energies[i]) < ΔE*a.γ
 
             println("Convergence criterum was met at step ", i, "!")
             k = i-1

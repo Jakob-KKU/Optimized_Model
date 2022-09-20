@@ -22,7 +22,7 @@ end
 
 function E(a::agent,  P1, P2, obstacle::geometry)
 
-    η(P2, obstacle) + E_BioMech(a, P2, P1)
+    η(P2, obstacle) + E_BioMech(a, P1, P2)
 
 end
 
