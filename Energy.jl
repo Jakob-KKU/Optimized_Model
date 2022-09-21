@@ -1,8 +1,17 @@
 #Calculate the Energy E[a.traj]
 #E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) = a.α*d(p1, p2)
-E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) =
-    a.α*(δt*(1+a.ϵ))*(d(p1, p2)/(δt*(1+a.ϵ))-a.v_des)^2#
+#E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) =
+#    a.α*(δt*(1+a.ϵ))*(d(p1, p2)/(δt*(1+a.ϵ))-a.v_des)^2#
 #E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) = a.α*d(p1, p2)^2
+
+
+#fitted cost for walking with vel v
+f(v) = v < 0.1 ? 7.6*v-35.4*v^2 : 0.4+0.6*v^2
+df(v) = v < 0.1 ? 7.6-70.8*v : 1.2*v
+
+#derived function for gain walking at v_des?
+g(a::agent) = a.ϵ*(a.v_des*df(a.v_des)-f(a.v_des))
+
 
 
 

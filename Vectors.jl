@@ -14,6 +14,8 @@ Base.abs(a::NTuple{2, Float64}) = sqrt(a[1]^2+a[2]^2)
 ∇d(u::NTuple{2, Float64}, v::NTuple{2, Float64}) = -1 .* (u.-v) ./ d(u, v)
 
 v(P1::NTuple{2, Float64}, P2::NTuple{2, Float64}, P3::NTuple{2, Float64}, δt) = (d(P1, P2) + d(P2, P3))/(2*δt)
+v(a::agent, P1, P2) = d(P1, P2)/(a.δt*(1+a.ϵ))
+
 
 function v(traj::Vector, start, goal, δt)
 
