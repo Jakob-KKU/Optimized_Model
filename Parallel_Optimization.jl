@@ -22,8 +22,9 @@ function Run_Parallel_Optimization!(a::agent, obstacle::geometry, steps::Int, Δ
 
 
         if mod(i, Δsteps) == 0
-            trajectories[j, :] .= a.traj
             j+=1
+
+            trajectories[j, :] .= a.traj
         end
 
         energies[i+1] = E(a, obstacle)

@@ -9,7 +9,7 @@ mutable struct agent
     traj::Vector{NTuple{2, Float64}}
 
     α::Float64 #influence of velocity
-    β::Float64 #influence of difference to V_des
+    σ::Float64 #inverse precision of perception
     ϵ::Float64 #Dilation parameter of maximum time
     δt::Float64 #time-step
     v_des::Float64 #desired_velocity
@@ -20,7 +20,7 @@ mutable struct agent
 end
 
 
-struct element
+mutable struct element
     x::NTuple{2, Float64}
     l::Float64
 end

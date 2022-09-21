@@ -3,7 +3,7 @@
 #E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) =
 #    a.α*(δt*(1+a.ϵ))*(d(p1, p2)/(δt*(1+a.ϵ))-a.v_des)^2#
 #E_BioMech(a::agent, p1::NTuple{2, Float64}, p2::NTuple{2, Float64}) = a.α*d(p1, p2)^2
-
+E_BioMech(a::agent, P1::NTuple{2, Float64}, P2::NTuple{2, Float64}) = a.α*a.δt*((1+a.ϵ)*f(v(a, P1, P2))+a.ϵ*g(a))
 
 #fitted cost for walking with vel v
 f(v) = v < 0.1 ? 7.6*v-35.4*v^2 : 0.4+0.6*v^2
@@ -31,19 +31,19 @@ end
 
 function E(a::agent,  P1, P2, obstacle::geometry)
 
-    η(P2, obstacle) + E_BioMech(a, P1, P2)
+    η(a, obstacles, P2) + E_BioMech(a, P1, P2)
 
 end
 
-function E(a::agent, i::Int, obstacle::geometry)
+function E(a::agent, i::Int, obstacles::geometry)
 
    if i == 1
 
-        η(a.traj[1], obstacle) + E_BioMech(a, a.traj[1], a.start)
+        η(a, obstacles, a.traj[1]) + E_BioMech(a, a.traj[1], a.start)
 
     else
 
-        η(a.traj[i], obstacle) + E_BioMech(a, a.traj[i], a.traj[i-1])
+        η(a, obstacles, a.traj[i]) + E_BioMech(a, a.traj[i], a.traj[i-1])
 
     end
 

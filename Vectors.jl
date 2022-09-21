@@ -5,6 +5,8 @@ d(u::NTuple{2, Float64}, v::NTuple{2, Float64}) =  sqrt((u[1]-v[1])^2+(u[2]-v[2]
 
 d_vec(a::NTuple{2, Float64}, b::NTuple{2, Float64}) = (b.-a)
 
+d_sq(P1, P2) = (P1[1]-P2[1])^2+(P1[2]-P2[2])^2
+
 ⋅(u::NTuple{2, Float64}, v::NTuple{2, Float64}) = u[1]*v[1]+u[2]*v[2]
 
 normalize(a::NTuple{2, Float64}) = a./abs(a)
