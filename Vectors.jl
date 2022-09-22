@@ -40,3 +40,4 @@ end
 #estimated time from start to goal
 T(a::agent) = d(a.start, a.goal)/(a.v_des)
 T(start, goal, v_des) = d(start, goal)/(v_des)
+T(start, im_goal, goal, v_des) = (d(start, im_goal)+d(im_goal, goal))/(v_des)
