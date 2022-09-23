@@ -1,5 +1,5 @@
 #Vectors
-e_(a::NTuple{2, Float64}, b::NTuple{2, Float64}) = (b.-a)./d(a, b)
+e_(a::NTuple{2, Float64}, b::NTuple{2, Float64}) = normalize(b.-a)
 
 d(u::NTuple{2, Float64}, v::NTuple{2, Float64}) =  sqrt((u[1]-v[1])^2+(u[2]-v[2])^2)
 
@@ -41,3 +41,18 @@ end
 T(a::agent) = d(a.start, a.goal)/(a.v_des)
 T(start, goal, v_des) = d(start, goal)/(v_des)
 T(start, im_goal, goal, v_des) = (d(start, im_goal)+d(im_goal, goal))/(v_des)
+
+
+function ∠(a::NTuple{2, Float64}, b::NTuple{2, Float64})
+
+    x = round((a⋅b)/(abs(a)*abs(b)), digits = 4)
+
+    #if x > 1.0
+    #    println("a = ", a, " und b = ", b)
+    #    acos(1)
+    #elseif x < 1
+    #    acos(-1.0)
+    #else
+        acos(x)
+    #end
+end

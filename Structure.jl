@@ -9,6 +9,7 @@ mutable struct agent
     traj::Vector{NTuple{2, Float64}}
 
     α::Float64 #influence of velocity
+    β::Float64 #Penalty for curvature
     σ::Float64 #inverse precision of perception
     ϵ::Float64 #Dilation parameter of maximum time
     δt::Float64 #time-step
