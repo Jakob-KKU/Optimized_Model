@@ -1,8 +1,8 @@
 #Init the struct
-
 mutable struct agent
 
     x::NTuple{2, Float64}
+    v::NTuple{2, Float64}
 
     start::NTuple{2, Float64}
     goal::NTuple{2, Float64}
@@ -15,11 +15,13 @@ mutable struct agent
     δt::Float64 #time-step
     v_des::Float64 #desired_velocity
     l::Float64
-
     γ::Float64 #Optimization stepsize
 
 end
 
+struct crowd
+    agent::Array{agent, 1}
+end
 
 mutable struct element
     x::NTuple{2, Float64}

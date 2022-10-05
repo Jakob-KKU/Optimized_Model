@@ -54,7 +54,7 @@ function Write_Data!(f, positions::Matrix)
 
 end
 
-function Write_Data!(f, positions::Vector)
+function Write_Data!(f, positions::Vector{Tuple{Float64, Float64}})
 
     N_t = length(positions)
     write(f, Row_Names())
@@ -62,6 +62,19 @@ function Write_Data!(f, positions::Vector)
     for frame in 1:N_t
         write(f, Data_Row(1, frame, positions[frame]))
     end
+end
+
+function Write_Data!(f, positions::Vector{Vector{Tuple{Float64, Float64}}})
+
+    N = length(positions)
+    write(f, Row_Names())
+
+    for id in 1:N
+        for frame in 1:length(positions[id])
+            write(f, Data_Row(id, frame, positions[id][frame]))
+        end
+    end
+
 end
 
 
