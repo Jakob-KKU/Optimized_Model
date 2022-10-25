@@ -54,7 +54,7 @@ T(a::agent) = d(a.start, a.goal)/(a.v_des)
 T(start, goal, v_des) = d(start, goal)/(v_des)
 T(start, im_goal, goal, v_des) = (d(start, im_goal)+d(im_goal, goal))/(v_des)
 
-t(a::agent, i) = a.δt*(1+a.ϵ)*i
+time(a::agent, i) = a.δt*(1+a.ϵ)*i
 traj_ind(a::agent, time) = Int(floor(time/(a.δt*(1+a.ϵ))))
 
 

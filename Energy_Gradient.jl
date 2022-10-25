@@ -159,19 +159,19 @@ function ∇E(a::agent, i::Int, crwd::crowd, obstacle::geometry)
 
     elseif i == 2
 
-        ∇E_mid(a, a.start, a.traj[1], a.traj[2], a.traj[3], a.traj[4], t(a, i), crwd, obstacle)
+        ∇E_mid(a, a.start, a.traj[1], a.traj[2], a.traj[3], a.traj[4], time(a, i), crwd, obstacle)
 
     elseif i == length(a.traj)
 
-        ∇E_end(a, t(a, i), crwd, obstacle)
+        ∇E_end(a, time(a, i), crwd, obstacle)
 
     elseif i == length(a.traj)-1
 
-        ∇E_mid(a, a.traj[end-3], a.traj[end-2], a.traj[end-1], a.traj[end], a.goal, t(a, i), crwd, obstacle)
+        ∇E_mid(a, a.traj[end-3], a.traj[end-2], a.traj[end-1], a.traj[end], a.goal, time(a, i), crwd, obstacle)
 
     else
 
-        ∇E_mid(a, a.traj[i-2], a.traj[i-1], a.traj[i], a.traj[i+1], a.traj[i+2], t(a, i), crwd, obstacle)
+        ∇E_mid(a, a.traj[i-2], a.traj[i-1], a.traj[i], a.traj[i+1], a.traj[i+2], time(a, i), crwd, obstacle)
 
     end
 
